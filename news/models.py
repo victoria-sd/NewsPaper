@@ -1,11 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models import Sum
+from django.urls import reverse
 
 
 class Author(models.Model):
     user_rate = models.IntegerField(default=0)
     author = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.author.username
 
     def update_rating(self):
         # суммарный рейтинг всех комментариев к статьям
@@ -25,6 +29,9 @@ class Author(models.Model):
 
 class Category(models.Model):
     name_category = models.CharField(max_length=64, unique=True)
+
+    def __str__(self):
+        return self.name_category
 
 
 class Post(models.Model):
@@ -58,6 +65,9 @@ class Post(models.Model):
 
     def __str__(self):
         return f'{self.heading.title()}: {self.content[:50]}'
+
+    def get_absolute_url(self):
+        return reverse('post_detail', args=[str(self.id)])
 
 
 class PostCategory(models.Model):
