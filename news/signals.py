@@ -12,17 +12,17 @@ def post_created(instance, created, **kwargs):
         return
 
     emails = User.objects.filter(
-        subscriptions__category=instance.category
+        subscriptions__category__in=instance.post_category.all()
     ).values_list('email', flat=True)
 
-    subject = f'Новая статья в категории {instance.category}'
+    subject = f'Новая статья в категории {instance.post_category}'
 
     text_content = (
         f'Статья: {instance.heading}\n'
-        f'Ссылка на товар: http://127.0.0.1:8000{instance.get_absolute_url()}'
+        f'Ссылка на статью: http://127.0.0.1:8000{instance.get_absolute_url()}'
     )
     html_content = (
-        f'Товар: {instance.heading}<br>'
+        f'Статья: {instance.heading}<br>'
         f'<a href="http://127.0.0.1{instance.get_absolute_url()}">'
         f'Ссылка на статью</a>'
     )
