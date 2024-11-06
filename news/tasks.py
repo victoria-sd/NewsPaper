@@ -1,13 +1,11 @@
-from datetime import datetime
+import datetime
 from celery import shared_task
 from celery import shared_task
 import time
 from django.conf import settings
-from django.contrib.auth.models import User
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.utils import timezone
-
 from news.models import Post
 from subscriptions.models import Subscription
 
