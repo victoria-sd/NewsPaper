@@ -5,6 +5,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from .forms import PostForm
 from .models import Post
 from .filters import PostFilter
+from .tasks import msg_new_post, weekly_post
 
 
 class PostsList(ListView):
@@ -64,6 +65,8 @@ class PostCreate(PermissionRequiredMixin, CreateView):
         if self.request.path == '/posts/articles/create/':
             post.category = 'A'
         post.save()
+        msg_new_post.delay(post.pk)
+        weekly_post.delay()
         return super().form_valid(form)
 
 
