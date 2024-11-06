@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9478667-1e54-4f95-800d-c94162480b58" name="Changes" comment="added tasks.py">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="b9478667-1e54-4f95-800d-c94162480b58" name="Changes" comment="added remooved idea">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NewsPapers/celery.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPapers/celery.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/tasks.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +127,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730893814979</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="added remooved idea">
+      <option name="closed" value="true" />
+      <created>1730919134628</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1730919134628</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -150,6 +157,7 @@
     <MESSAGE value="added changes in runapscheduler.py, weeky_post.html" />
     <MESSAGE value="add .idea" />
     <MESSAGE value="added tasks.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="added tasks.py" />
+    <MESSAGE value="added remooved idea" />
+    <option name="LAST_COMMIT_MESSAGE" value="added remooved idea" />
   </component>
 </project>
