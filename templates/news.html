@@ -7,7 +7,14 @@ Posts
 {% endblock title %}
  
 {% block content %}
-<h1>Все новости</h1>
+
+{% load cache %}
+    {% cache 60*10 header %}
+        <h1>Все новости</h1>
+    {% endcache %}
+
+
+
 <h3>{{ news|length }}</h3>
 
     {% for new in news %}
