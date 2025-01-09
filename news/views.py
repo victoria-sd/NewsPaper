@@ -1,12 +1,15 @@
 # from datetime import datetime
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.core.cache import cache
+from django.http import HttpResponse
 from django.urls import reverse_lazy
+from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .forms import PostForm
 from .models import Post
 from .filters import PostFilter
 from .tasks import msg_new_post, weekly_post
+from django.utils.translation import gettext as _
 
 
 class PostsList(ListView):
@@ -93,4 +96,10 @@ class PostDelete(DeleteView):
     template_name = 'posts_delete.html'
     success_url = reverse_lazy('post_list')
 
+
+class Index(View):
+    def get(self, request):
+        string = _('Hello world')
+
+        return HttpResponse(string)
 
