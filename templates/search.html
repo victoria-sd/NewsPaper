@@ -1,4 +1,5 @@
-{% extends 'flatpages/default.html' %} 
+{% extends 'flatpages/default.html' %}
+{% load i18n %}
 
 {% load custom_tags %}
 {% load custom_filters %}
@@ -8,13 +9,13 @@ Serch
 {% endblock title %}
  
 {% block content %}
-<h1>Поиск статей</h1>
+<h1>{% trans 'Search post' %}</h1>
 
 <hr>
 
     <form action="" method="get">
        {{ filterset.form.as_p }}
-       <input type="submit" value="Найти" />
+       <input type="submit" value="{% trans 'Find' %}" />
    </form>
 <hr>
 

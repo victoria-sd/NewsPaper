@@ -1,8 +1,11 @@
 # from datetime import datetime
+import pytz
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.core.cache import cache
 from django.http import HttpResponse
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
+from django.utils import timezone
 from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .forms import PostForm
@@ -10,6 +13,7 @@ from .models import Post
 from .filters import PostFilter
 from .tasks import msg_new_post, weekly_post
 from django.utils.translation import gettext as _
+from django.http.response import HttpResponse
 
 
 class PostsList(ListView):
@@ -99,7 +103,18 @@ class PostDelete(DeleteView):
 
 class Index(View):
     def get(self, request):
-        string = _('Hello world')
+        # .  Translators: This message appears on the home page only
+        models = Post.objects.all()
 
-        return HttpResponse(string)
+        context = {
+            'models': models,
+            'current_time': timezone.localtime(timezone.now()),
+            'timezones': pytz.common_timezones  # добавляем в контекст все доступные часовые пояса
+        }
 
+        return HttpResponse(render(request, 'news.html', context))
+
+    #  по пост-запросу будем добавлять в сессию часовой пояс, который и будет обрабатываться написанным нами ранее middleware
+    def post(self, request):
+        request.session['django_timezone'] = request.POST['timezone']
+        return redirect('/')

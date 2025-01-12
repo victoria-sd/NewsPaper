@@ -58,14 +58,15 @@ SITE_URL = '127.0.0.1:8000'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
-    # 'allauth.account.middleware.AccountMiddleware',
-    'django.middleware.locale.LocaleMiddleware'
+    'basic.middlewares.TimezoneMiddleware',
+    # 'allauth.account.middleware.AccountMiddleware'
 ]
 
 ROOT_URLCONF = 'NewsPapers.urls'
