@@ -102,19 +102,6 @@ class PostDelete(DeleteView):
 
 
 class Index(View):
-    def get(self, request):
-        # .  Translators: This message appears on the home page only
-        models = Post.objects.all()
-
-        context = {
-            'models': models,
-            'current_time': timezone.localtime(timezone.now()),
-            'timezones': pytz.common_timezones  # добавляем в контекст все доступные часовые пояса
-        }
-
-        return HttpResponse(render(request, 'news.html', context))
-
-    #  по пост-запросу будем добавлять в сессию часовой пояс, который и будет обрабатываться написанным нами ранее middleware
     def post(self, request):
         request.session['django_timezone'] = request.POST['timezone']
-        return redirect('/')
+        return redirect(request.META['HTTP_REFERER'])
